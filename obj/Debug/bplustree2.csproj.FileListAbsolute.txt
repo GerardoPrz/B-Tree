@@ -1,0 +1,15 @@
+C:\Users\HP\Desktop\bplustree2\bin\Debug\bplustree2.exe.config
+C:\Users\HP\Desktop\bplustree2\bin\Debug\bplustree2.exe
+C:\Users\HP\Desktop\bplustree2\bin\Debug\bplustree2.pdb
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\bplustree2\obj\Debug\UserControl1.g.cs
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2_MarkupCompile.cache
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2_MarkupCompile.lref
+C:\Users\HP\Desktop\bplustree2\obj\Debug\UserControl1.baml
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.g.resources
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.Form1.resources
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.Properties.Resources.resources
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.csproj.GenerateResource.cache
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.exe
+C:\Users\HP\Desktop\bplustree2\obj\Debug\bplustree2.pdb

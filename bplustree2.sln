@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bplustree2", "bplustree2.csproj", "{F80AFE2B-91F9-4BBE-9198-D1793689E61F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F80AFE2B-91F9-4BBE-9198-D1793689E61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80AFE2B-91F9-4BBE-9198-D1793689E61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80AFE2B-91F9-4BBE-9198-D1793689E61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80AFE2B-91F9-4BBE-9198-D1793689E61F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE32AAD1-CDD8-4130-AE94-8FD58A3B3881}
+	EndGlobalSection
+EndGlobal
