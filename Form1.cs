@@ -21,7 +21,7 @@ namespace bplustree2
         {
             InitializeComponent();
             this.arbol = new Arbol(2);
-            Pagina raiz = new Pagina("R", direccionAcumulador);//creo la raiz que sera la inicial del arbol
+            Pagina raiz = new Pagina("H", direccionAcumulador);//creo la raiz que sera la inicial del arbol
             direccionAcumulador += 65;//aumento el tamaño de la raiz en la direccion
 
             //meto la raiz en el arbol
@@ -174,6 +174,8 @@ namespace bplustree2
             //reviso si la pagina ya esta llena
             if(arbol.ElementAt(0).Registros.Count > 2 * arbol.Orden)
             {
+                //la raiz la pongo de tipo raiz
+                arbol.ElementAt(0).TipodePagina = "R";
                 dividePagina(arbol.ElementAt(0));//divido la raiz
             }
         }
@@ -385,30 +387,73 @@ namespace bplustree2
 
         private void button1_Click(object sender, EventArgs e)//escribir en archivo
         {
+            File.WriteAllText("bptree.txt", "");//limpio el archivo
             //ESCRIBIR EN U ARCHIVO
             String cadena;
-            String cadena1 = "";
+            String cadena1;
+            List<Elemento> elementos = new List<Elemento>();
+            List<int> registros = new List<int>();
 
             StreamWriter escribir = File.AppendText("bptree.txt");
-
             enlazaRegistros();
-
             foreach (Pagina pagina in arbol)
             {
                 cadena = "";
                 cadena1 = "";
 
                 cadena = "| " + pagina.Direccion + " | " + pagina.TipodePagina;
+
                 foreach (Registro registro in pagina.Registros)
                 {
-                    cadena1 +=  registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |";
-                    escribir.WriteLine("| " + registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " | \n");
+                    cadena1 += registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |";
+                    Elemento elemento = new Elemento(registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |", registro.Direccion);
+                    if (registros.Contains(registro.Clave) == false)
+                    {
+                        registros.Add(registro.Clave);
+                        elementos.Add(elemento);
+                    }
                 }
-                escribir.WriteLine(cadena + " | " + cadena1);
-                escribir.WriteLine("\n");
+                Elemento elemento1 = new Elemento(cadena + " | " + cadena1, pagina.Direccion);
+                elementos.Add(elemento1);
             }
-            escribir.WriteLine("--------------------------------------------");
-            escribir.Close(); 
+            //ordeno
+            IEnumerable<Elemento> paginaOrdenada = elementos.OrderBy(x => x.Direccion);
+            elementos = paginaOrdenada.ToList();
+            
+            foreach (Elemento elemento in elementos)
+            {
+                escribir.WriteLine(elemento.Cadena + "\n");
+            }
+            escribir.Close();
+
+            //LECTURA DE UUN ARCHIVO
+            StreamReader lectura;
+            string cadena2;
+            richTextBox_Leer.Text = "";
+            try
+            {
+                lectura = File.OpenText("bptree.txt");
+                //Lectura Adelantada
+
+                cadena2 = lectura.ReadLine();
+                while (cadena2 != null)
+                {
+                    richTextBox_Leer.Text += cadena2 + "\n";
+                    cadena2 = lectura.ReadLine();
+                }
+
+
+                lectura.Close();
+
+            }
+            catch (FileNotFoundException fe)
+            {
+                Console.WriteLine("Error" + fe);
+            }
+            catch (IOException fe)
+            {
+                Console.WriteLine("Error" + fe);
+            }
         }
 
         private void eliminar(int clave)
@@ -634,34 +679,7 @@ namespace bplustree2
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //LECTURA DE UUN ARCHIVO
-            StreamReader lectura;
-            string cadena;
-            richTextBox_Leer.Text = "";
-            try
-            {
-                lectura = File.OpenText("bptree.txt");
-                //Lectura Adelantada
-
-                cadena = lectura.ReadLine();
-                while (cadena != null)
-                {
-                    richTextBox_Leer.Text += cadena + "\n";
-                    cadena = lectura.ReadLine();
-                }
-
-
-                lectura.Close();
-
-            }
-            catch (FileNotFoundException fe)
-            {
-                Console.WriteLine("Error" + fe);
-            }
-            catch (IOException fe)
-            {
-                Console.WriteLine("Error" + fe);
-            }
+            
         }
 
 

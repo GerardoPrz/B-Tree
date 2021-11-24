@@ -32,7 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.richTextBox_Leer = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -77,16 +76,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(541, 338);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Leer Archivo";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // richTextBox_Leer
             // 
             this.richTextBox_Leer.Font = new System.Drawing.Font("MingLiU-ExtB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,21 +99,19 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(3, 54);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(133, 112);
+            this.richTextBox1.Size = new System.Drawing.Size(133, 68);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "Para insertar elementos solo hay que ponerlo en el textbox y presionar el boton \"" +
-    "ingresar\". Para visualizar el archivo se presiona el boton escribir y despues el" +
-    " boton \"Leer Archivo\"";
+    "ingresar\". \"";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(3, 172);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(133, 65);
+            this.richTextBox2.Size = new System.Drawing.Size(133, 46);
             this.richTextBox2.TabIndex = 8;
-            this.richTextBox2.Text = " Para visualizar el archivo se presiona el boton escribir y despues el boton \"Lee" +
-    "r Archivo\"";
+            this.richTextBox2.Text = " Para visualizar el archivo se presiona el boton escribir.";
             // 
             // richTextBox3
             // 
@@ -145,7 +132,6 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.richTextBox_Leer);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -164,7 +150,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.RichTextBox richTextBox_Leer;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.RichTextBox richTextBox1;
