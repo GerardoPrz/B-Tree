@@ -347,19 +347,31 @@ namespace bplustree2
             return intermediaParaDevolver;
         }
 
-        private void enlazaRegistros()
+        private List<Registro> enlazaRegistros()
         {
+            List<Registro> registros_en_hojas = new List<Registro>();
+
+            //meter todos los registros de las hoja en una sola lista para enlazarlos mas facil
             foreach (Pagina pagina in arbol)
             {
                 if (pagina.TipodePagina == "H")
                 {
-                    for (int i = 0; i < pagina.Registros.Count - 1; i++)//10 22 35 44
+                    foreach (Registro registro in pagina.Registros)
                     {
-                        pagina.Registros.ElementAt(i).DireccionDER = pagina.Registros.ElementAt(i+1).Direccion;
+                        registros_en_hojas.Add(registro);
                     }
-                    pagina.Registros.Last().DireccionDER = -1;//al ultimo lo pongo en menos uno porque no esta enlazado 
                 }
             }
+
+            //ahoa los enlazo
+            for (int i = 0; i < registros_en_hojas.Count - 1; i++)//10 22 35 44
+            {
+                registros_en_hojas.ElementAt(i).DireccionDER = registros_en_hojas.ElementAt(i + 1).Direccion;
+            }
+            if( registros_en_hojas.Count > 0)
+                registros_en_hojas.Last().DireccionDER = -1;//al ultimo lo pongo en menos uno porque no esta enlazado 
+
+            return registros_en_hojas;
         }
 
         private void button2_Click(object sender, EventArgs e)//ingresar
@@ -395,7 +407,7 @@ namespace bplustree2
             List<int> registros = new List<int>();
 
             StreamWriter escribir = File.AppendText("bptree.txt");
-            enlazaRegistros();
+            List<Registro> registrosEnlazados = enlazaRegistros();
             foreach (Pagina pagina in arbol)
             {
                 cadena = "";
@@ -405,16 +417,21 @@ namespace bplustree2
 
                 foreach (Registro registro in pagina.Registros)
                 {
-                    cadena1 += registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |";
-                    Elemento elemento = new Elemento(registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |", registro.Direccion);
+                    cadena1 += registro.Direccion + " | " + registro.Clave + " | ";
+                    /*Elemento elemento = new Elemento(registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |", registro.Direccion);
                     if (registros.Contains(registro.Clave) == false)
                     {
                         registros.Add(registro.Clave);
                         elementos.Add(elemento);
-                    }
+                    }*/
                 }
                 Elemento elemento1 = new Elemento(cadena + " | " + cadena1, pagina.Direccion);
                 elementos.Add(elemento1);
+            }
+            foreach (Registro registro in registrosEnlazados)
+            {
+                Elemento elemento = new Elemento("| " + registro.Direccion + " | " + registro.Clave + " | " + registro.DireccionDER + " |", registro.Direccion);
+                elementos.Add(elemento);
             }
             //ordeno
             IEnumerable<Elemento> paginaOrdenada = elementos.OrderBy(x => x.Direccion);
@@ -719,6 +736,19 @@ namespace bplustree2
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            this.yaHayIntermedios = false;
+            this.ingresados.Clear();
+            this.arbol.Clear();
+            this.direccionAcumulador = 1000;
+            Pagina raiz = new Pagina("H", direccionAcumulador);//creo la raiz que sera la inicial del arbol
+            direccionAcumulador += 65;//aumento el tamaño de la raiz en la direccion
+
+            //meto la raiz en el arbol
+            arbol.Add(raiz);
         }
     }
 }
